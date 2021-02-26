@@ -11,16 +11,20 @@
 #import "InputController.h"
 #import "Contact.h"
 #import "ContactList.h"
+#import "Input.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BOOL programOn = YES;
         ContactList *newContactList = [[ContactList alloc] initContactList];
+        Input *newInput = [[Input alloc] initInputLog];
         
         while (programOn) {
             InputController *inputcontroller = [[InputController alloc] init];
             Contact *newContact = [[Contact alloc] init];
-            NSString *userChoiceInput = [inputcontroller inputForPrompt:@"\n\nWhat would you like to do next?\n\nnew - Create a new contact\n\nlist - List all contacts\n\nquit - Exit Application\n\nshow - Show target contact by id\n\nfind - Find contact with keyword\n"];
+            NSString *userChoiceInput = [inputcontroller inputForPrompt:@"\n\nWhat would you like to do next?\n\nnew - Create a new contact\n\nlist - List all contacts\n\nquit - Exit Application\n\nshow - Show target contact by id\n\nfind - Find contact with keyword\n\nhistory - See three latest input log\n"];
+            [newInput addNewLog:userChoiceInput];
+            
             if ([userChoiceInput  isEqual: @"quit"]) {
                 programOn = NO;
             } else if ([userChoiceInput  isEqual: @"new"]) {
@@ -44,7 +48,6 @@ int main(int argc, const char * argv[]) {
                     if ([phoneNumber  isEqual: @"finish"]) {
                         break;
                     }
-//                    newContact.phoneNumbers = @{label: phoneNumber};
                     newContact.phoneNumbers[label] = phoneNumber;
                 }
                 
@@ -65,6 +68,11 @@ int main(int argc, const char * argv[]) {
             } else if ([userChoiceInput  isEqual: @"find"]) {
                 NSString *searchKeywordInput = [inputcontroller inputForPrompt:@"\nInput the keyword to search: "];
                 NSLog(@"\n%@", [newContactList returnMatchedContacts:searchKeywordInput]);
+            // Bonus 5: History
+            } else if ([userChoiceInput  isEqual: @"history"]) {
+                NSLog(@"\n%@", newInput.returnLatestThreeLogs);
+            } else {
+                NSLog(@"Invalid input. Please try again.");
             }
         }
     }

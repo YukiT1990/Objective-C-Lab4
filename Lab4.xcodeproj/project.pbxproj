@@ -11,6 +11,7 @@
 		616A141525E8A58400EA269D /* InputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616A141425E8A58400EA269D /* InputController.m */; };
 		61D245F225E8B03B005F6428 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D245F125E8B03B005F6428 /* Contact.m */; };
 		61D245F625E8B35C005F6428 /* ContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D245F525E8B35C005F6428 /* ContactList.m */; };
+		61D245FB25E93DE4005F6428 /* Input.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D245FA25E93DE4005F6428 /* Input.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		61D245F125E8B03B005F6428 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		61D245F425E8B35C005F6428 /* ContactList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactList.h; sourceTree = "<group>"; };
 		61D245F525E8B35C005F6428 /* ContactList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactList.m; sourceTree = "<group>"; };
+		61D245F925E93DE4005F6428 /* Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
+		61D245FA25E93DE4005F6428 /* Input.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Input.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				616A141425E8A58400EA269D /* InputController.m */,
 				61D245F425E8B35C005F6428 /* ContactList.h */,
 				61D245F525E8B35C005F6428 /* ContactList.m */,
+				61D245F925E93DE4005F6428 /* Input.h */,
+				61D245FA25E93DE4005F6428 /* Input.m */,
 			);
 			path = Lab4;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D245FB25E93DE4005F6428 /* Input.m in Sources */,
 				61D245F625E8B35C005F6428 /* ContactList.m in Sources */,
 				616A141525E8A58400EA269D /* InputController.m in Sources */,
 				61D245F225E8B03B005F6428 /* Contact.m in Sources */,

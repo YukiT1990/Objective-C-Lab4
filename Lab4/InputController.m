@@ -9,6 +9,7 @@
 
 @implementation InputController
 
+
 - (NSString *) inputForPrompt: (NSString *) promptString {
     int maxLength = 225;
     NSLog(@"%@ ", promptString);
@@ -22,5 +23,6 @@
     }
     return NULL;
 }
+
 
 @end
