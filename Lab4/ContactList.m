@@ -10,7 +10,12 @@
 @implementation ContactList
 
 - (instancetype) initContactList {
-    _contactList = [NSMutableArray arrayWithObjects:[[Contact alloc] initName:@"Yuki Tsukada" AndEmail:@"yuki@gmail.com"], [[Contact alloc] initName:@"Yuki1 Tsukada" AndEmail:@"yuki1@gmail.com"] , nil];
+    NSMutableDictionary *dict0 = [NSMutableDictionary new];
+    dict0[@"Home"] = @"0123456789";
+    NSMutableDictionary *dict1 = [NSMutableDictionary new];
+    dict1[@"Home"] = @"1234567890";
+    dict1[@"Mobile"] = @"2345678901";
+    _contactList = [NSMutableArray arrayWithObjects:[[Contact alloc] initName:@"Yuki Tsukada" AndEmail:@"yuki@gmail.com" AndPhoneNumbers: dict0], [[Contact alloc] initName:@"Yuki1 Tsukada" AndEmail:@"yuki1@gmail.com" AndPhoneNumbers:dict1] , nil];
     return self;
 }
 
@@ -22,7 +27,13 @@
     NSString *fullContactList = @"";
     int i = 0;
     for (Contact *contact in self.contactList) {
-        NSString *eachContactDetail = [NSString stringWithFormat: @"%d:<%@>(%@)\n", i, contact.name, contact.email];
+        NSString *allPhoneNumber = @"";
+        NSString *eachPhoneNumber = @"";
+        for (NSString *label in [contact.phoneNumbers allKeys]) {
+            eachPhoneNumber = [NSString stringWithFormat:@"%@: %@ ", label, contact.phoneNumbers[label]];
+            allPhoneNumber = [allPhoneNumber stringByAppendingString:eachPhoneNumber];
+        }
+        NSString *eachContactDetail = [NSString stringWithFormat: @"%d:<%@>(%@){ %@}\n", i, contact.name, contact.email, allPhoneNumber];
         i++;
         fullContactList = [fullContactList stringByAppendingString:eachContactDetail];
     }
@@ -32,7 +43,13 @@
 - (NSString *) returnTargetContactDetail: (int) index {
     if (index < [self.contactList count]) {
         Contact *targetContact = [self.contactList objectAtIndex:index];
-        NSString *targetContactInfo = [NSString stringWithFormat: @"id: %d\nname: %@\nemail: %@\n", index, targetContact.name, targetContact.email];
+        NSString *allPhoneNumber = @"";
+        NSString *eachPhoneNumber = @"";
+        for (NSString *label in [targetContact.phoneNumbers allKeys]) {
+            eachPhoneNumber = [NSString stringWithFormat:@"%@: %@ ", label, targetContact.phoneNumbers[label]];
+            allPhoneNumber = [allPhoneNumber stringByAppendingString:eachPhoneNumber];
+        }
+        NSString *targetContactInfo = [NSString stringWithFormat: @"id: %d\nname: %@\nemail: %@\nphone numbers: { %@}\n", index, targetContact.name, targetContact.email, allPhoneNumber];
         return targetContactInfo;
     } else {
         return @"Not found.";
@@ -51,7 +68,14 @@
     for (int i = 0; i < [self.contactList count]; i++) {
         if ([matchedContactsIndex containsObject:[NSNumber numberWithInt:i]]) {
             Contact *eachContact = [self.contactList objectAtIndex:i];
-            NSString *eachContactDetail = [NSString stringWithFormat: @"%d:<%@>(%@)\n", i, eachContact.name, eachContact.email];
+            NSString *allPhoneNumber = @"";
+            NSString *eachPhoneNumber = @"";
+            for (NSString *label in [eachContact.phoneNumbers allKeys]) {
+                eachPhoneNumber = [NSString stringWithFormat:@"%@: %@ ", label, eachContact.phoneNumbers[label]];
+                allPhoneNumber = [allPhoneNumber stringByAppendingString:eachPhoneNumber];
+            }
+                
+            NSString *eachContactDetail = [NSString stringWithFormat: @"%d:<%@>(%@)\nphone numbers: { %@}\n", i, eachContact.name, eachContact.email, allPhoneNumber];
             matchedContactList = [matchedContactList stringByAppendingString:eachContactDetail];
         }
     }

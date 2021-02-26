@@ -24,13 +24,30 @@ int main(int argc, const char * argv[]) {
             if ([userChoiceInput  isEqual: @"quit"]) {
                 programOn = NO;
             } else if ([userChoiceInput  isEqual: @"new"]) {
-                newContact.email = [inputcontroller inputForPrompt:@"Input the email: "];
+                newContact.email = [inputcontroller inputForPrompt:@"\nInput the email: "];
                 // Bonus 3: Prevent duplicate entries
                 if ([newContactList checkDuplicateEmail:newContact.email]) {
                     NSLog(@"\nThe email already exists.");
                     continue;
                 }
-                newContact.name = [inputcontroller inputForPrompt:@"Input the name: "];
+                newContact.name = [inputcontroller inputForPrompt:@"\nInput the name: "];
+                
+                // Bonus 4: Multiple phone numbers
+                newContact.phoneNumbers = [NSMutableDictionary new];
+                while (YES) {
+                    NSLog(@"\nInput finish to complete phone number registration\n");
+                    NSString *label = [inputcontroller inputForPrompt:@"\nInput a label for the phone number: "];
+                    if ([label  isEqual: @"finish"]) {
+                        break;
+                    }
+                    NSString * phoneNumber = [inputcontroller inputForPrompt:@"\nInput the phone number: "];
+                    if ([phoneNumber  isEqual: @"finish"]) {
+                        break;
+                    }
+//                    newContact.phoneNumbers = @{label: phoneNumber};
+                    newContact.phoneNumbers[label] = phoneNumber;
+                }
+                
                 [newContactList addContact:newContact];
                 NSLog(@"\nThe contact is successfully added.");
             } else if ([userChoiceInput  isEqual: @"list"]) {

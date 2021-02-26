@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSString* name;
 @property NSString* email;
+@property NSMutableDictionary* phoneNumbers;
 
-- (instancetype) initName: (NSString *) name AndEmail: (NSString *) email;
+- (instancetype) initName: (NSString *) name AndEmail: (NSString *) email AndPhoneNumbers: (NSMutableDictionary *) phoneNumbers;
 
 @end
 

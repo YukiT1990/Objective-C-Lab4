@@ -9,11 +9,12 @@
 
 @implementation Contact
 
-- (instancetype) initName: (NSString *) name AndEmail: (NSString *) email{
+- (instancetype) initName: (NSString *) name AndEmail: (NSString *) email AndPhoneNumbers: (NSMutableDictionary *) phoneNumbers {
     self = [super init];
     if (self) {
         _name = name;
         _email = email;
+        _phoneNumbers = phoneNumbers;
     }
     return self;
 }
