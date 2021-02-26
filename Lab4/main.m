@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
         while (programOn) {
             InputController *inputcontroller = [[InputController alloc] init];
             Contact *newContact = [[Contact alloc] init];
-            NSString *userChoiceInput = [inputcontroller inputForPrompt:@"\n\nWhat would you like to do next?\n\nnew - Create a new contact\n\nlist - List all contacts\n\nquit - Exit Application\n\nshow - Show target contact by id\n"];
+            NSString *userChoiceInput = [inputcontroller inputForPrompt:@"\n\nWhat would you like to do next?\n\nnew - Create a new contact\n\nlist - List all contacts\n\nquit - Exit Application\n\nshow - Show target contact by id\n\nfind - Find contact with keyword\n"];
             if ([userChoiceInput  isEqual: @"quit"]) {
                 programOn = NO;
             } else if ([userChoiceInput  isEqual: @"new"]) {
@@ -39,6 +39,9 @@ int main(int argc, const char * argv[]) {
                     NSLog(@"\nInvalid input. Please input a number.");
                 }
             // Bonus 2: Implement Contact search
+            } else if ([userChoiceInput  isEqual: @"find"]) {
+                NSString *searchKeywordInput = [inputcontroller inputForPrompt:@"\nInput the keyword to search: "];
+                NSLog(@"\n%@", [newContactList returnMatchedContacts:searchKeywordInput]);
             }
         }
     }
