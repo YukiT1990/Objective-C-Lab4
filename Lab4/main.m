@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
         while (programOn) {
             InputController *inputcontroller = [[InputController alloc] init];
             Contact *newContact = [[Contact alloc] init];
-            NSString *userChoiceInput = [inputcontroller inputForPrompt:@"\nWhat would you like to do next?\n\nnew - Create a new contact\n\nlist - List all contacts\n\nquit - Exit Application\n"];
+            NSString *userChoiceInput = [inputcontroller inputForPrompt:@"\n\nWhat would you like to do next?\n\nnew - Create a new contact\n\nlist - List all contacts\n\nquit - Exit Application\n\nshow - Show target contact by id\n"];
             if ([userChoiceInput  isEqual: @"quit"]) {
                 programOn = NO;
             } else if ([userChoiceInput  isEqual: @"new"]) {
@@ -29,6 +29,16 @@ int main(int argc, const char * argv[]) {
                 [newContactList addContact:newContact];
             } else if ([userChoiceInput  isEqual: @"list"]) {
                 NSLog(@"\n%@", newContactList.returnContactList);
+                
+            // Bonus 1: Contact details
+            } else if ([userChoiceInput  isEqual: @"show"]) {
+                NSString *indexChoiceInput = [inputcontroller inputForPrompt:@"\nInput the id of the contact to display: "];
+                if ([indexChoiceInput  isEqual: @"0"] || indexChoiceInput.intValue != 0) {
+                    NSLog(@"\n%@", [newContactList returnTargetContactDetail:indexChoiceInput.intValue]);
+                } else {
+                    NSLog(@"\nInvalid input. Please input a number.");
+                }
+            // Bonus 2: Implement Contact search
             }
         }
     }

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) addContact: (Contact *) newContact;
 - (NSString *) returnContactList;
+- (NSString *) returnTargetContactDetail: (int) index;
 
 @end
 

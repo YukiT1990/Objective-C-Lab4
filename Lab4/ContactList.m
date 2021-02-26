@@ -29,4 +29,14 @@
     return fullContactList;
 }
 
+- (NSString *) returnTargetContactDetail: (int) index {
+    if (index < [self.contactList count]) {
+        Contact *targetContact = [self.contactList objectAtIndex:index];
+        NSString *targetContactInfo = [NSString stringWithFormat: @"id: %d\nname: %@\nemail: %@\n", index, targetContact.name, targetContact.email];
+        return targetContactInfo;
+    } else {
+        return @"Not found.";
+    }
+}
+
 @end
