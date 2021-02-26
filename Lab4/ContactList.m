@@ -61,4 +61,14 @@
     return matchedContactList;
 }
 
+- (BOOL) checkDuplicateEmail: (NSString *) newEmail {
+    for (int i = 0; i < [self.contactList count]; i++) {
+        Contact *eachContact = [self.contactList objectAtIndex:i];
+        if ([eachContact.email  isEqual: newEmail]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

@@ -24,9 +24,15 @@ int main(int argc, const char * argv[]) {
             if ([userChoiceInput  isEqual: @"quit"]) {
                 programOn = NO;
             } else if ([userChoiceInput  isEqual: @"new"]) {
-                newContact.name = [inputcontroller inputForPrompt:@"Input the name: "];
                 newContact.email = [inputcontroller inputForPrompt:@"Input the email: "];
+                // Bonus 3: Prevent duplicate entries
+                if ([newContactList checkDuplicateEmail:newContact.email]) {
+                    NSLog(@"\nThe email already exists.");
+                    continue;
+                }
+                newContact.name = [inputcontroller inputForPrompt:@"Input the name: "];
                 [newContactList addContact:newContact];
+                NSLog(@"\nThe contact is successfully added.");
             } else if ([userChoiceInput  isEqual: @"list"]) {
                 NSLog(@"\n%@", newContactList.returnContactList);
                 

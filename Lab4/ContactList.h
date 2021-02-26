@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *) returnContactList;
 - (NSString *) returnTargetContactDetail: (int) index;
 - (NSString *) returnMatchedContacts: (NSString *) keyword;
+- (BOOL) checkDuplicateEmail: (NSString *) newEmail;
 
 @end
 
